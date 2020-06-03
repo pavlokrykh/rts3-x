@@ -1,0 +1,300 @@
+<ItemLabel@Label>:
+	font_size: '20sp'
+	halign: 'left'
+	valign: 'middle'
+	text_size: self.size
+
+<Container>:
+
+    do_default_tab: False
+    background_color: (10, 10, 10, 1)
+    text_input: text_input
+    first_number: first_number
+    second_number: second_number
+    state_factorization: state_factorization
+	speed_of_learning: speed_of_learning
+	deadline: deadline
+	number_of_iterations: number_of_iterations
+	w1: w1
+	w2: w2
+	used_ires_num: used_ires_num
+	a_value: a_value
+	b_value: b_value
+	c_value: c_value
+	d_value: d_value
+	y_value: y_value
+	roots: roots
+	mutate_chance: mutate_chance
+
+    TabbedPanelItem:
+        text: 'Lab 3.1'
+        GridLayout:
+            rows: 6
+            BoxLayout:
+                size_hint: 1, 0.5
+                padding: [20, 0, 0, 0]
+                ItemLabel:
+                    text: 'Input number:'
+                    color: 200,200,200,1
+
+            AnchorLayout:
+                size_hint: 1, 0.5
+                TextInput:
+                    id: text_input
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'int'
+
+            BoxLayout:
+                size_hint: 0.9, 0.8
+                padding: [30, 20, 30, 0]
+                Button:
+                    text: 'Factorize'
+                    font_size: '25sp'
+
+                    on_release:
+                        root.first_calculate()
+
+            BoxLayout:
+                Label:
+                    id: state_factorization
+                    text: 'Working condition'
+                    font_size: '20sp'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: 'The first multiplier: '
+                    color: 200,200,200,1
+                Label:
+                    id: first_number
+                    font_size: '20sp'
+                    text: ''
+                    size_hint: 0.5, 1
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: 'The second multiplier: '
+                    color: 200,200,200,1
+                Label:
+                    id: second_number
+                    font_size: '20sp'
+                    text: ''
+                    size_hint: 0.5, 1
+                    color: 200,200,200,1
+
+    TabbedPanelItem:
+        text: 'Lab 3.2'
+        GridLayout:
+            rows: 8
+            BoxLayout:
+		        padding: [0, 0, 0, 0]
+		        ItemLabel:
+		    	    text: 'Input parameters:'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "Speed of learning"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '0.001'
+                    id: speed_of_learning
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'float'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "Deadline (s)"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '5'
+                    id: deadline
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'float'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "Number of iterations"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '10000'
+                    id: number_of_iterations
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'int'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                size_hint: 0.9, 1
+                padding: [30, 20, 30, 0]
+                Button:
+                    text: 'Training'
+                    font_size: '25sp'
+
+                    on_release:
+                        root.second_calculate()
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: 'w1: '
+                    color: 200,200,200,1
+                Label:
+                    id: w1
+                    font_size: '20sp'
+                    text: ''
+                    size_hint: 0.5, 1
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: 'w2: '
+                    color: 200,200,200,1
+                Label:
+                    id: w2
+                    font_size: '20sp'
+                    text: ''
+                    size_hint: 0.5, 1
+                    color: 200,200,200,1
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: 'Iterations passed: '
+                    color: 200,200,200,1
+                Label:
+                    id: used_ires_num
+                    font_size: '20sp'
+                    text: ''
+                    size_hint: 0.5, 1
+                    color: 200,200,200,1
+
+    TabbedPanelItem:
+        text: 'Lab 3.3'
+        GridLayout:
+            rows: 9
+            BoxLayout:
+                size_hint: 1, 0.5
+                padding: [20, 0, 0, 0]
+                ItemLabel:
+                    text: 'Input numbers:'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "a"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '1'
+                    id: a_value
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'int'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "b"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '2'
+                    id: b_value
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'int'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "c"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '3'
+                    id: c_value
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'int'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "d"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '4'
+                    id: d_value
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'int'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: "y"
+                    color: 200,200,200,1
+                TextInput:
+                    text: '16'
+                    id: y_value
+                    font_size: '25sp'
+                    multiline: False
+                    input_type: 'number'
+                    input_filter: 'int'
+                    color: 200,200,200,1
+
+            BoxLayout:
+                size_hint: 0.9, 1
+                padding: [30, 20, 30, 0]
+                Button:
+                    text: 'Calculate'
+                    font_size: '25sp'
+
+                    on_release:
+                        root.third_calculate()
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: 'Roots of the equation: '
+                    color: 200,200,200,1
+                Label:
+                    id: roots
+                    font_size: '20sp'
+                    text: ''
+                    size_hint: 0.5, 1
+                    color: 200,200,200,1
+
+            BoxLayout:
+                padding: [10, 0, 0, 0]
+                ItemLabel:
+                    text: 'Best mutate chance: '
+                    color: 200,200,200,1
+                Label:
+                    id: mutate_chance
+                    font_size: '20sp'
+                    text: ''
+                    size_hint: 0.5, 1
+                    color: 200,200,200,1
