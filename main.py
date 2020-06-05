@@ -169,7 +169,7 @@ class Container(TabbedPanel):
 
         iterations = []
         experiments = 10
-        mutate_chances = (0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)
+        mutate_chances = (1, 1, 1, 1, 1, 1, 1, 1, 1)
         for i in mutate_chances:
             steps = 0
             for j in range(experiments):
