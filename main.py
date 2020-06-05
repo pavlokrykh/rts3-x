@@ -1,9 +1,12 @@
 from kivy.app import App
 from kivy.config import Config
 from kivy.uix.tabbedpanel import TabbedPanel
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 import timeit
 import random
 import math
+import time
 
 Config.set('kivy', 'keyboard_mode', 'systemanddock')
 
@@ -126,12 +129,21 @@ class Container(TabbedPanel):
 
     def first_calculate(self):
 
+        start_time = time.time()
+
         try:
             inp_number = int(self.text_input.text)
             a, b, c = ferma_factorize(inp_number)
             self.first_number.text, self.second_number.text, self.state_factorization.text = str(a), str(b), c
         except:
             self.state_factorization.text = 'Incorrect input'
+
+        end_time = time.time()
+        total_time = end_time - start_time
+        popup = Popup(title='Execution time',
+                      content=Label(text=str(total_time)),
+                      size_hint=(None, None), size=(400, 400))
+        popup.open()
 
     def second_calculate(self):
 
